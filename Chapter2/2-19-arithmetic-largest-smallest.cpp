@@ -1,4 +1,5 @@
 #include <iostream>
+//#include <algorithm>
 using std::cout;
 using std::cin;
 
@@ -12,6 +13,11 @@ int main(int argc, char const **argv) {
   int largest = number1;
   int sum {0};
   int product{1};
+  /*
+   * largest = std::max({number1, number2, number3});
+   * smallest = std::min({number1, number2, number3});
+   */
+
   if(number2 > largest){
       largest = number2;
   }
