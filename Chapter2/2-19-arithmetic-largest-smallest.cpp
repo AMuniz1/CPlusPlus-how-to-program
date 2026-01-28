@@ -1,5 +1,11 @@
+/*
+ * Write a program that
+ inputs three integers from the keyboard and prints the sum,
+ average, product, smallest and largest of these numbers.
+ */
+
 #include <iostream>
-//#include <algorithm>
+//#include <algorithm> for std::min({}) and std::max()
 using std::cout;
 using std::cin;
 
@@ -13,7 +19,7 @@ int main(int argc, char const **argv) {
   int largest = number1;
   int sum {0};
   int product{1};
-  /*
+  /* I feel this way below is a cheat code
    * largest = std::max({number1, number2, number3});
    * smallest = std::min({number1, number2, number3});
    */
