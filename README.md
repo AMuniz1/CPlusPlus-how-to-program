@@ -1,1 +1,2 @@
-Solved exercises from C++ How to Program (C++14), organized by chapter.
+Solved exercises from C++ How to Program (C++14), organized by chapter. I maybe 
+use C++20 starndard features instead of C++14
