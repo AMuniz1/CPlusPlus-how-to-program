@@ -6,8 +6,7 @@ class Complex{
         double img;
     public:
         Complex(double r=0, double i=0){
-            setReal(r);
-            setImag(i);
+            setComplex(r,i);
         }
         Complex( Complex &c){
             real = c.real;
@@ -20,6 +19,10 @@ class Complex{
         }
         void setImag(double imag){
             img = imag;
+        }
+        void setComplex(double r, double i){
+            real = r;
+            img = i;
         }
         //getters
         double getReal() const{
