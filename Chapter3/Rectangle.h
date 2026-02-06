@@ -8,7 +8,7 @@ class Rectangle{
             setLength(l);
             setBreadth(b);
         }
-        Rectangle (Rectangle & rect){
+        Rectangle (const Rectangle & rect){
             length = rect.length;
             breadth = rect.breadth;
         }
@@ -33,16 +33,16 @@ class Rectangle{
         int getBreadth() const{
             return breadth;
         }
-        int area(){
+        int area() const{
             return breadth * length;
         }
-        int perimeter() {
+        int perimeter() const{
             return 2 * (breadth + length);
         }
-        double diagonal() {
+        double diagonal() const{
             return std::sqrt(length*length + breadth*breadth);
         }
-        bool isSquare(){
+        bool isSquare() const{
             if (length == breadth){
                 return true;
             }
