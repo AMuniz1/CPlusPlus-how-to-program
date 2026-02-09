@@ -13,7 +13,7 @@
  int main(){
      unsigned int counter{0};
      unsigned long long number{1};
-     while(number < std::numeric_limits<unsigned long long>::max()){
+     while(number < std::numeric_limits<int>::max()){
         number *= 2;
         counter++;
         cout << number << "\n";
