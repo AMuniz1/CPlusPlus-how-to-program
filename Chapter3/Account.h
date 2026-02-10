@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <string>
 #include <iostream>
 
@@ -60,6 +61,7 @@ public:
 
     // Display
     void displayAccount() const {
+        cout << std::fixed << std::setprecision(2);
         cout << "Account Number: " << accountNumber << "\n"
              << "Name: " << firstName << " " << lastName << "\n"
              << "Balance: " << balance << "\n";
