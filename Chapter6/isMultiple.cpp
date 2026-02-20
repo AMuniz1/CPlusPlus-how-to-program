@@ -9,17 +9,17 @@ bool isEven(int n){
 }
 
 int main(int argc, char **argv){
-	int c{0}, 
+	int c{0};
 	int d{0};
 	std::cout << "Entre com dois inteiros: \n";
-	std::cin>> c >> d; 
+	std::cin>> c >> d;
 	bool flag = isMultiple(c, d);
 	if(flag){
 		std::cout<< d << " é múltiplo de " << c << "\n";
 	}
 	else{
 		std::cout<< d << " não é múltiplo de " << c << "\n";
-	
+
 	}
 	bool flag2 = isEven(c);
 	if(flag2){
@@ -27,7 +27,7 @@ int main(int argc, char **argv){
 	}
 	else{
 		std::cout<< c << " is not even.\n";
-	
+
 	}
 
 	return 0;

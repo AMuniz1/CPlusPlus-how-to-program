@@ -1,29 +1,30 @@
 #include <iostream>
-#include <iomanip>
-#include <cmath>
+#include <cstdint>
 
-using std::cout;
+bool isPerfect(std::uint64_t number) {
+    if (number < 2)
+        return false;
 
-void perfectNumbers(unsigned long long number){
-  unsigned long long sum = 0;
-  for(unsigned long long i = 1; i <= number-1; i++){
-    if(number%i == 0){
-      sum += i;
+    std::uint64_t sum = 1; // 1 sempre divide
+
+    for (std::uint64_t i = 2; i * i <= number; ++i) {
+        if (number % i == 0) {
+            sum += i;
+
+            std::uint64_t pair = number / i;
+            if (pair != i) // evita duplicar raiz quadrada
+                sum += pair;
+        }
     }
-    if ( i > floor(sqrt(number)) && sum == 1){
-      return;
-    }
-  }
-  if (sum == number){
-    cout<< number << " is a perfect number\n";
-  } 
-  
+
+    return sum == number;
 }
-int main(){
-  
-  for (unsigned long long i = 2; i <= 100000; i++){
-    perfectNumbers(i);
-  }
-  
-  return 0;
+
+int main() {
+    for (std::uint64_t i = 2; i <= 100000; ++i) {
+        if (isPerfect(i))
+            std::cout << i << " is a perfect number\n";
+    }
+
+    return 0;
 }

@@ -1,55 +1,55 @@
 #include <iostream>
-#include <ctime>
 #include <random>
-#include <iomanip>
+#include <cstdint>
 
-using std::cout;
-using std::cin;
+bool playRound(std::mt19937& rng) {
+    std::uniform_int_distribution<std::uint32_t> dist(1, 1000);
 
-void guessingNumber(){
-  std::default_random_engine engine{static_cast<unsigned int>(time(0))};
-  std::uniform_int_distribution<unsigned int> randomInt{1,1000};
-  int guess{0};
-  int numberGuesses{0};
-  char play;
-  bool flag = true;
-  while (flag){
-    int number = randomInt(engine);
-    while(true){
-      cout << "Enter a guess between 1 and 1000 \n";
-      cin >> guess;
-      if(guess == number){
-        numberGuesses++;
-        if (numberGuesses < 10){
-          cout << "You rock on this game!\n";
+    const std::uint32_t number = dist(rng);
+    std::uint32_t guesses = 0;
+
+    while (true) {
+        std::cout << "Enter a guess between 1 and 1000: ";
+
+        std::uint32_t guess{};
+        if (!(std::cin >> guess)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input.\n";
+            continue;
         }
-        else if (numberGuesses < 20){
-          cout << "You win!\n";
+
+        ++guesses;
+
+        if (guess == number) {
+            if (guesses < 10)
+                std::cout << "You rock at this game!\n";
+            else if (guesses < 20)
+                std::cout << "You win!\n";
+            else
+                std::cout << "You win, but that took a while.\n";
+
+            return true;
         }
-        else{
-          cout << "You win, but you suck at this game bro\n";
-        }
-        break;
-      }
-      else if (guess < number){
-        cout << "Too low, try again!\n";
-      }
-      else{
-        cout << "Too high, try again!\n";
-      }
-      numberGuesses++;
+
+        std::cout << (guess < number ? "Too low!\n" : "Too high!\n");
     }
-    cout << "Do you want to play again ? (y or n)\n";
-    cin >> play;
-    if (play == 'n'){
-      flag = false;
-    }
-  }
 }
 
-int main (){
+int main() {
+    std::random_device rd;
+    std::mt19937 rng(rd());
 
-  guessingNumber();
-  return 0;
+    while (true) {
+        playRound(rng);
 
+        std::cout << "Play again? (y/n): ";
+        char play{};
+        std::cin >> play;
+
+        if (play != 'y' && play != 'Y')
+            break;
+    }
+
+    return 0;
 }
